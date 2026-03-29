@@ -4,6 +4,9 @@ Helper utilities for quality checking
 from typing import List, Dict, Any
 
 
+def _agent_label(result: Dict[str, Any]) -> str:
+    """Quality check dicts use ``agent_name``; older code used ``name``."""
+    return str(result.get("agent_name") or result.get("name") or "unknown")
 
 
 def calculate_overall_score(quality_results: List[Dict[str, Any]]) -> float:
@@ -81,7 +84,7 @@ def merge_issues(quality_results: List[Dict[str, Any]]) -> List[str]:
         issues = result.get('issues', [])
         for issue in issues:
             # Prefix with agent name for context
-            prefixed_issue = f"[{result['agent_name']}] {issue}"
+            prefixed_issue = f"[{_agent_label(result)}] {issue}"
             all_issues.append(prefixed_issue)
 
 
@@ -109,7 +112,7 @@ def merge_recommendations(quality_results: List[Dict[str, Any]]) -> List[str]:
         suggestions = result.get('suggestions', [])
         for suggestion in suggestions:
             # Prefix with agent name for context
-            prefixed_suggestion = f"[{result['agent_name']}] {suggestion}"
+            prefixed_suggestion = f"[{_agent_label(result)}] {suggestion}"
             all_recommendations.append(prefixed_suggestion)
 
 
@@ -167,7 +170,7 @@ def extract_critical_issues(quality_results: List[Dict[str, Any]]) -> List[str]:
         if result.get('status') == 'failed':
             issues = result.get('issues', [])
             for issue in issues:
-                critical_issues.append(f"[CRITICAL - {result['agent_name']}] {issue}")
+                critical_issues.append(f"[CRITICAL - {_agent_label(result)}] {issue}")
 
 
     return critical_issues

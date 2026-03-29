@@ -101,7 +101,7 @@ class CategoryClassifierAgent:
         )
 
         return {
-            "name": self.agent_name,
+            "agent_name": self.agent_name,
             "score": score,
             "status": combined_status,
             "issues": issues,
@@ -149,7 +149,7 @@ class CategoryClassifierAgent:
             status = "passed"
 
         return {
-            "name": self.agent_name,
+            "agent_name": self.agent_name,
             "score": score,
             "status": status,
             "issues": issues,

@@ -52,20 +52,24 @@ def format_quality_report(state: Dict[str, Any]) -> str:
 
     quality_results = state.get('quality_results', [])
     for result in quality_results:
-        report_lines.append(f"\n{result['agent_name']}:")
-        report_lines.append(f"  Status: {result['status'].upper()}")
-        report_lines.append(f"  Score: {result['score']:.1f}/100")
+        if not isinstance(result, dict):
+            report_lines.append(f"\n{result!r}:")
+            continue
+        label = result.get("agent_name") or result.get("name") or "unknown_agent"
+        report_lines.append(f"\n{label}:")
+        report_lines.append(f"  Status: {str(result.get('status', 'unknown')).upper()}")
+        score = float(result.get("score", 0) or 0)
+        report_lines.append(f"  Score: {score:.1f}/100")
 
 
-        if result.get('issues'):
+        if result.get("issues"):
             report_lines.append("  Issues:")
-            for issue in result['issues']:
+            for issue in result.get("issues") or []:
                 report_lines.append(f"    - {issue}")
 
-
-        if result.get('suggestions'):
+        if result.get("suggestions"):
             report_lines.append("  Suggestions:")
-            for suggestion in result['suggestions']:
+            for suggestion in result.get("suggestions") or []:
                 report_lines.append(f"    - {suggestion}")
 
 
@@ -160,13 +164,14 @@ def format_json_report(state: Dict[str, Any]) -> Dict[str, Any]:
         },
         "check_results": [
             {
-                "agent": result['agent_name'],
-                "status": result['status'],
-                "score": result['score'],
-                "issues": result.get('issues', []),
-                "suggestions": result.get('suggestions', [])
+                "agent": result.get("agent_name") or result.get("name", "unknown"),
+                "status": result.get("status", "unknown"),
+                "score": result.get("score", 0),
+                "issues": result.get("issues", []),
+                "suggestions": result.get("suggestions", []),
             }
-            for result in state.get('quality_results', [])
+            for result in state.get("quality_results", [])
+            if isinstance(result, dict)
         ],
         "summary": {
             "total_issues": len(state.get('all_issues', [])),

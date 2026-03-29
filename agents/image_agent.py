@@ -86,7 +86,7 @@ class ImageQualityAgent:
         img_valid_stats = self.validate_image_urls(images)
 
         return {
-            "name": self.agent_name,
+            "agent_name": self.agent_name,
             "score": score,
             "status": combined_status,
             "issues": issues,
@@ -147,7 +147,7 @@ class ImageQualityAgent:
                 status = "passed"
 
         return {
-            "name": self.agent_name,
+            "agent_name": self.agent_name,
             "score": score,
             "status": status,
             "issues": issues,

@@ -86,7 +86,7 @@ class DescriptionQualityAgent:
         }
 
         return {
-            "name": self.agent_name,
+            "agent_name": self.agent_name,
             "score": score,
             "status": combined_status,
             "issues": issues,
@@ -135,7 +135,7 @@ class DescriptionQualityAgent:
             status = "warning"
 
         return {
-            "name": self.agent_name,
+            "agent_name": self.agent_name,
             "score": score,
             "status": status,
             "issues": issues,

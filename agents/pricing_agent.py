@@ -82,7 +82,7 @@ class PricingValidatorAgent:
         details = llm_result.get("details", {})
 
         return {
-            "name": self.agent_name,
+            "agent_name": self.agent_name,
             "score": score,
             "status": combined_status,
             "issues": issues,
@@ -160,7 +160,7 @@ class PricingValidatorAgent:
             status = "passed"
 
         return {
-            "name": self.agent_name,
+            "agent_name": self.agent_name,
             "score": score,
             "status": status,
             "issues": issues,

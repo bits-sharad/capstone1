@@ -84,7 +84,7 @@ class SentimentAnalyzerAgent:
         details = llm_result.get("details", {})
 
         return {
-            "name": self.agent_name,
+            "agent_name": self.agent_name,
             "score": score,
             "status": combined_status,
             "issues": issues,
@@ -105,7 +105,7 @@ class SentimentAnalyzerAgent:
         if not reviews:
             # Not a failure – many products simply have no reviews yet
             return {
-                "name": self.agent_name,
+                "agent_name": self.agent_name,
                 "score": 70.0,
                 "status": "warning",
                 "issues": ["No reviews available yet."],
@@ -166,7 +166,7 @@ class SentimentAnalyzerAgent:
             status = "passed"
 
         return {
-            "name": self.agent_name,
+            "agent_name": self.agent_name,
             "score": score,
             "status": status,
             "issues": issues,

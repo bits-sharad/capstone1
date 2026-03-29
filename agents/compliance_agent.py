@@ -112,7 +112,7 @@ class ComplianceCheckerAgent:
         }
 
         return {
-            "name": self.agent_name,
+            "agent_name": self.agent_name,
             "score": score,
             "status": combined_status,
             "issues": issues,
@@ -165,7 +165,7 @@ class ComplianceCheckerAgent:
             status = "passed"
 
         return {
-            "name": self.agent_name,
+            "agent_name": self.agent_name,
             "score": score,
             "status": status,
             "issues": issues,
