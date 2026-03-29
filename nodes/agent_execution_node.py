@@ -6,8 +6,8 @@ from __future__ import annotations
 
 from typing import Optional, Dict, Any, List
 
-from Project.state import ProductQualityState, QualityCheckResult
-from Project.analyzer.quality_analyzer import QualityAnalyzer
+from state import ProductQualityState, QualityCheckResult
+from analyzer.quality_analyzer import QualityAnalyzer
 
 
 def agent_execution_node(

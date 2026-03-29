@@ -6,8 +6,8 @@ from __future__ import annotations
 
 from datetime import datetime
 
-from Project.state import ProductQualityState, QualityCheckResult
-from Project.utils.validators import validate_product_data
+from state import ProductQualityState, QualityCheckResult
+from utils.validators import validate_product_data
 
 
 def validation_node(state: ProductQualityState) -> ProductQualityState:

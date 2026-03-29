@@ -2,8 +2,8 @@
 Quality Analyzer - Orchestrates all quality checks
 """
 from typing import Dict, Any, List
-from Project.services import GeminiService
-from Project.agents import (
+from services import GeminiService
+from agents import (
     DescriptionQualityAgent,
     PricingValidatorAgent,
     ImageQualityAgent,
@@ -11,7 +11,7 @@ from Project.agents import (
     ComplianceCheckerAgent,
     SentimentAnalyzerAgent
 )
-from Project.utils.helpers import (
+from utils.helpers import (
     calculate_overall_score,
     determine_final_status,
     merge_issues,

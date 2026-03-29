@@ -6,10 +6,10 @@ from __future__ import annotations
 
 from typing import Any, Dict
 
-from Project.state import ProductQualityState, create_initial_state
-from Project.analyzer.quality_analyzer import QualityAnalyzer
-from Project.analyzer.report_generator import ReportGenerator
-from Project.nodes import validation_node, aggregation_node, decision_node
+from state import ProductQualityState, create_initial_state
+from analyzer.quality_analyzer import QualityAnalyzer
+from analyzer.report_generator import ReportGenerator
+from nodes import validation_node, aggregation_node, decision_node
 
 
 class WorkflowManager:

@@ -3,7 +3,7 @@ Report Generator - Generates quality check reports
 """
 from typing import Dict, Any
 from datetime import datetime
-from Project.utils.formatters import (
+from utils.formatters import (
     format_quality_report,
     format_json_report,
     format_status_badge,

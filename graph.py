@@ -8,14 +8,14 @@ from typing import Any, Dict, Generator
 
 from langgraph.graph import StateGraph, END
 
-from Project.state import ProductQualityState
-from Project.nodes import (
+from state import ProductQualityState
+from nodes import (
     validation_node,
     agent_execution_node,
     aggregation_node,
     decision_node,
 )
-from Project.analyzer.quality_analyzer import QualityAnalyzer
+from analyzer.quality_analyzer import QualityAnalyzer
 
 
 def create_quality_check_graph(analyzer: QualityAnalyzer):

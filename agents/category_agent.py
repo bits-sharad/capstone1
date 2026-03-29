@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import Any, Dict, List
 
-from Project.services import GeminiService
+from services import GeminiService
 
 
 VALID_CATEGORIES: List[str] = [

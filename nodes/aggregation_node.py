@@ -4,8 +4,8 @@ Aggregation Node - Aggregates results from all agents
 
 from __future__ import annotations
 
-from Project.state import ProductQualityState
-from Project.utils.helpers import (
+from state import ProductQualityState
+from utils.helpers import (
     calculate_overall_score,
     merge_issues,
     merge_recommendations,

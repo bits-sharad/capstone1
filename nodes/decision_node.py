@@ -6,8 +6,8 @@ from __future__ import annotations
 
 from datetime import datetime
 
-from Project.state import ProductQualityState
-from Project.utils.helpers import determine_final_status, extract_critical_issues
+from state import ProductQualityState
+from utils.helpers import determine_final_status, extract_critical_issues
 
 
 def decision_node(state: ProductQualityState) -> ProductQualityState:

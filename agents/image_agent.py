@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from typing import Any, Dict, List
 
-from Project.services import GeminiService
-from Project.utils.validators import validate_url
+from services import GeminiService
+from utils.validators import validate_url
 
 
 class ImageQualityAgent:
