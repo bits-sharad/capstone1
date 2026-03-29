@@ -32,6 +32,8 @@ class GeminiService:
         genai.configure(api_key=self.api_key)
         self.model = genai.GenerativeModel(model_name)
         self.chat_sessions = {}
+        # Agents branch on this before calling the LLM (see agent *.analyze methods).
+        self.enabled = True
 
 
     def generate_content(self, prompt: str, temperature: float = 0.7) -> str:
