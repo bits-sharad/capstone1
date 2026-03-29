@@ -30,16 +30,11 @@ def aggregation_node(state: ProductQualityState) -> ProductQualityState:
         state["recommendations"] = recommendations  # type: ignore[index]
 
         status_counts = count_check_statuses(quality_results)
-        metadata = state.get("metadata") or {}
-        stats = metadata.get("stats") or {}
-        stats.update(
-            {
-                "passed_checks": status_counts.get("passed", 0),
-                "failed_checks": status_counts.get("failed", 0),
-                "warning_checks": status_counts.get("warning", 0),
-            }
-        )
-        metadata["stats"] = stats
+        metadata = dict(state.get("metadata") or {})
+        # Top-level keys expected by state.metadata, formatters, and tests (not only metadata["stats"]).
+        metadata["passed_checks"] = status_counts.get("passed", 0)
+        metadata["failed_checks"] = status_counts.get("failed", 0)
+        metadata["warning_checks"] = status_counts.get("warning", 0)
         state["metadata"] = metadata  # type: ignore[index]
     except Exception as exc:
         errors = list(state.get("errors", []))

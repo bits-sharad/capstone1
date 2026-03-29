@@ -31,10 +31,8 @@ def decision_node(state: ProductQualityState) -> ProductQualityState:
                 all_issues.append(issue)
         state["all_issues"] = all_issues  # type: ignore[index]
 
-        metadata = state.get("metadata") or {}
-        stats = metadata.get("stats") or {}
-        stats["critical_issues_count"] = len(critical_issues)
-        metadata["stats"] = stats
+        metadata = dict(state.get("metadata") or {})
+        metadata["critical_issues_count"] = len(critical_issues)
         metadata["completed_at"] = datetime.utcnow().isoformat()
 
         # Build a simple decision reason
